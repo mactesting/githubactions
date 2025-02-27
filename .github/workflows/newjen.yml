@@ -33,6 +33,6 @@ jobs:
           fi
 
           # Trigger Jenkins Job with Crumb Token
-          curl -X POST "$JENKINS_URL/job/MyNewJob/buildWithParameters?token=secrettoken" \
+          curl -X POST "$JENKINS_URL/job/MyNewJob/buildWithParameters?token=secrettoken&branch=main" \
             -u "$USER:$API_TOKEN" \
             -H "$CRUMB_HEADER: $CRUMB_VALUE"
