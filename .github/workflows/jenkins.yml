@@ -9,22 +9,12 @@ jobs:
   trigger-jenkins:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
       - name: Fetch Jenkins Crumb and Trigger Job
         run: |
           JENKINS_URL="http://18.232.157.197:8080"
           USER="admin"
           API_TOKEN="113c6c26d43528b02cc5e07e772826e49b"
 
-          # Fetch the Crumb Token
-          CRUMB=$(curl -s -u "$USER:$API_TOKEN" "$JENKINS_URL/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)")
-
-          # Extract the Crumb Header Name
-          CRUMB_HEADER=$(echo "$CRUMB" | cut -d ':' -f1)
-          CRUMB_VALUE=$(echo "$CRUMB" | cut -d ':' -f2)
-
-          echo "Crumb Token Retrieved: $CRUMB_VALUE"
 
         #   curl -X POST "$JENKINS_URL/createItem?name=MyNewJob" \
         #   -u "$USER:$API_TOKEN" \
