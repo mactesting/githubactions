@@ -34,4 +34,4 @@ jobs:
 
           # Trigger Jenkins Job with Crumb Token
           curl -X POST "http://18.232.157.197:8080/job/MyNewJob/buildWithParameters?token=secrettoken" \
-          -u "admin:YOUR_API_TOKEN"
+          -u "$USER:$API_TOKEN"
