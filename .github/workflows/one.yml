@@ -50,6 +50,7 @@ jobs:
 
   job3:
     name: job3
+    # if: {{ always() }}
     needs: job2
     runs-on: ubuntu-latest
     steps:
