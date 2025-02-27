@@ -27,13 +27,13 @@ jobs:
 
           echo "Crumb Token Retrieved: $CRUMB_VALUE"
 
-          curl -X POST "$JENKINS_URL/createItem?name=MyNewJob" \
-          -u "$USER:$API_TOKEN" \
-          -H "$CRUMB_HEADER: $CRUMB_VALUE" \
-          --data-binary @job-config.xml \
-          -H "Content-Type: text/xml"
+        #   curl -X POST "$JENKINS_URL/createItem?name=MyNewJob" \
+        #   -u "$USER:$API_TOKEN" \
+        #   -H "$CRUMB_HEADER: $CRUMB_VALUE" \
+        #   --data-binary @job-config.xml \
+        #   -H "Content-Type: text/xml"
 
           # Trigger Jenkins Job with Crumb Token
-          curl -X POST "$JENKINS_URL/job/MyNewJob/buildWithParameters?token=secrettoken&branch=main" \
+          curl -X POST "$JENKINS_URL/job/MyNewJob/buildWithParameters?token=secrettoken \
             -u "$USER:$API_TOKEN" \
             -H "$CRUMB_HEADER: $CRUMB_VALUE"
