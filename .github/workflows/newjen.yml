@@ -15,13 +15,8 @@ jobs:
           USER="admin"
           API_TOKEN="113c6c26d43528b02cc5e07e772826e49b"
 
-
-        #   curl -X POST "$JENKINS_URL/createItem?name=MyNewJob" \
-        #   -u "$USER:$API_TOKEN" \
-        #   -H "$CRUMB_HEADER: $CRUMB_VALUE" \
-        #   --data-binary @job-config.xml \
-        #   -H "Content-Type: text/xml"
-
+          
           # Trigger Jenkins Job with Crumb Token
-          curl -X POST "http://18.232.157.197:8080/job/MyNewJob/buildWithParameters?token=secrettoken" \
-          -u "$USER:$API_TOKEN"
+          curl -X POST "$JENKINS_URL/job/MyNewJob/buildWithParameters?token=secrettoken" \
+            -u "$USER:$API_TOKEN"
+            
