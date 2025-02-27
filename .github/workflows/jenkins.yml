@@ -21,14 +21,14 @@ jobs:
     steps:
       - name: Trigger Jenkins Job with Crumb Token
         run: |
-    JENKINS_URL="http://18.232.157.197:8080/"
-    USER="admin"
-    API_TOKEN="113c6c26d43528b02cc5e07e772826e49b"
+            JENKINS_URL="http://18.232.157.197:8080/"
+            USER="admin"
+            API_TOKEN="113c6c26d43528b02cc5e07e772826e49b"
 
     # Fetch the Crumb Token
-    CRUMB=$(curl -s -u "$USER:$API_TOKEN" "$JENKINS_URL/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)")
+            CRUMB=$(curl -s -u "$USER:$API_TOKEN" "$JENKINS_URL/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)")
 
     # Trigger Jenkins job with the crumb
-    curl -X POST "$JENKINS_URL/job/j1/buildWithParameters?token=secrettoken&branch=main" \
-      -u "$USER:$API_TOKEN" \
-      -H "$CRUMB"
+            curl -X POST "$JENKINS_URL/job/j1/buildWithParameters?token=secrettoken&branch=main" \
+            -u "$USER:$API_TOKEN" \
+            -H "$CRUMB"
