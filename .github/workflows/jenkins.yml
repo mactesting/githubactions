@@ -3,32 +3,19 @@ name: Parallel Testing with GitHub Actions & Jenkins
 on: [push]
 
 jobs:
-  #   linux-macos-tests:
-  #     runs-on: ${{ matrix.os }}
-  #     strategy:
-  #       matrix:
-  #         os: [ubuntu-latest, macos-latest]
-  #     steps:
-  #       - name: Checkout Code
-  #         uses: actions/checkout@v4
-
-  #       - name: Run Tests
-  #         run: npm test  # Replace with your test command
-
+  
   trigger-jenkins:
     runs-on: ubuntu-latest
-    # needs: linux-macos-tests
     steps:
       - name: Trigger Jenkins Job with Crumb Token
         run: |
-            JENKINS_URL="http://18.232.157.197:8080/"
+            JENKINS_URL="http://18.232.157.197:8080"
             USER="admin"
             API_TOKEN="113c6c26d43528b02cc5e07e772826e49b"
 
-    # Fetch the Crumb Token
+    
             CRUMB=$(curl -s -u "$USER:$API_TOKEN" "$JENKINS_URL/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)")
 
-    # Trigger Jenkins job with the crumb
             curl -X POST "$JENKINS_URL/job/j1/buildWithParameters?token=secrettoken&branch=main" \
             -u "$USER:$API_TOKEN" \
             -H "$CRUMB"
