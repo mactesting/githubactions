@@ -11,11 +11,11 @@ on:
     # paths:
     #   - 'one/**'
 
-  pull-request:
-    branches:
-      - main
-    branches-ignore:
-      - feature/*
+#   pull-requests:
+#     branches:
+#       - main
+#     branches-ignore:
+#       - feature/*
 
     # schedule:
     #   - cron: '0 0 * * *'
