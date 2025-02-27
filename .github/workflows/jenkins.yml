@@ -20,7 +20,7 @@ jobs:
     needs: linux-macos-tests
     steps:
       - name: Trigger Jenkins Job with Crumb Token
-  run: |
+        run: |
     JENKINS_URL="http://18.232.157.197:8080/"
     USER="admin"
     API_TOKEN="113c6c26d43528b02cc5e07e772826e49b"
