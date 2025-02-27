@@ -11,7 +11,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: Fetch Jenkins Crumb and Trigger Job
         run: |
           JENKINS_URL="http://18.232.157.197:8080"
