@@ -17,7 +17,7 @@ jobs:
 
   trigger-jenkins:
     runs-on: ubuntu-latest
-    needs: linux-macos-tests
+    # needs: linux-macos-tests
     steps:
       - name: Trigger Jenkins Job with Crumb Token
         run: |
